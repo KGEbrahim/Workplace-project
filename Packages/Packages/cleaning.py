@@ -1,16 +1,17 @@
 import pandas as pd
 
 def findnulls_duplicates(dataframe):
-    # Find rows with null values
-    null_rows = dataframe[dataframe.isnull().any(axis=1)]
-    
-    # Find rows with duplicate values
-    duplicate_rows = dataframe[dataframe.duplicated(keep=False)]
+    # Find the number of null values per column
+    null_counts = dataframe.isnull().sum()
 
-    # Store in dataframe
+    # Find rows with duplicate values across the entire DataFrame
+    duplicate_rows = dataframe.duplicated(keep=False)
+    duplicate_count = duplicate_rows.sum()
+
+    # Store null and duplicate info in a DataFrame
     result = pd.DataFrame({
-        "null_rows": [null_rows if not null_rows.empty else pd.DataFrame()],
-        "duplicate_rows": [duplicate_rows if not duplicate_rows.empty else pd.DataFrame()]
-    })
+        "null_rows": null_counts,
+        "duplicate_rows": [duplicate_count] * len(dataframe.columns)
+    }, index=dataframe.columns)
 
     return result
