@@ -5,13 +5,13 @@ def findnulls_duplicates(dataframe):
     null_counts = dataframe.isnull().sum()
 
     # Find rows with duplicate values across the entire DataFrame
-    duplicate_rows = dataframe.duplicated(keep=False)
+    duplicate_rows = dataframe.duplicated()
     duplicate_count = duplicate_rows.sum()
 
     # Store null and duplicate info in a DataFrame
     result = pd.DataFrame({
         "null_rows": null_counts,
-        "duplicate_rows": [duplicate_count] * len(dataframe.columns)
+        "duplicate_rows": duplicate_count
     }, index=dataframe.columns)
 
     return result
