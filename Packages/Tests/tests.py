@@ -25,8 +25,8 @@ def test_findnulls_duplicates():
     # Check for duplicate rows
     duplicate_rows = result['duplicate_rows'].iloc[0]
 
-    # Debugging to see the value of duplicate_rows
-    print(f"Duplicate count: {duplicate_rows}")
+    # Check for duplicates in columns
+    duplicates_column_wise = result['duplicates_column_wise'].iloc[0]
 
     # Assert null values
     assert null_rows_name > 0, "Null values not correctly identified in 'Name'"
@@ -36,6 +36,9 @@ def test_findnulls_duplicates():
 
     # Assert duplicate values
     assert duplicate_rows > 0, "Duplicate values not correctly identified"
+
+    # Assert duplicates column-wise
+    assert duplicates_column_wise > 0 , "Duplicates values column-wise not correctly identified"
 
 if __name__ == "__main__":
     test_findnulls_duplicates()
