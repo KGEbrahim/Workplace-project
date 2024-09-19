@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name= 'cleaning',
-    version= '0.3',
+    version= '0.31',
     packages= find_packages(exclude=['Tests*']),
     license= 'None',
     description= 'Cleaning package for dataframes',
