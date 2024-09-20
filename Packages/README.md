@@ -13,3 +13,9 @@ version: 0.2
 
 version: 0.3
 - An addition of counting duplicates column-wise
+
+version: 0.31
+- Removed duplicates column-wise code from findnulls_duplicates function and created separate function for the column-wise count of duplicates.
+
+version: 0.4
+- Added functionality to remove duplicates (without subset)

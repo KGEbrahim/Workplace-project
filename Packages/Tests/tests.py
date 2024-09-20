@@ -1,5 +1,7 @@
 import pandas as pd
 import sys
+
+#
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -17,6 +19,7 @@ def test_findnulls_duplicates():
 
     # Call the cleaning function
     result = cleaning.findnulls_duplicates(df)
+    result1 = cleaning.column_duplicates(df)
 
     # Check for null rows in the 'Name' and 'Age' columns
     null_rows_name = result.loc['Name', 'null_rows']
@@ -26,7 +29,10 @@ def test_findnulls_duplicates():
     duplicate_rows = result['duplicate_rows'].iloc[0]
 
     # Check for duplicates in columns
-    duplicates_column_wise = result['duplicates_column_wise'].iloc[0]
+    duplicates_column_wise = result1['duplicates_column_wise'].iloc[0]
+
+    #Debugging keyerror
+    #print(result1)
 
     # Assert null values
     assert null_rows_name > 0, "Null values not correctly identified in 'Name'"
